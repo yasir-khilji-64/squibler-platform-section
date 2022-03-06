@@ -8,11 +8,6 @@ from .serializers import SectionSerializer
 from .permissions import IsOwner
 
 
-# Create your views here.
-# class SectionAPIView(ListCreateAPIView):
-#     queryset = Sections.objects.filter(parent__isnull=True)
-#     serializer_class = SectionSerializer
-
 class SectionAPIView(ListCreateAPIView):
     serializer_class = SectionSerializer
     queryset = Sections.objects.filter(parent__isnull=True)
@@ -33,3 +28,6 @@ class SectionDetailAPIView(RetrieveUpdateDestroyAPIView):
 
     def get_queryset(self):
         return self.queryset.filter(owner=self.request.user)
+
+    def perform_update(self, serializer):
+        return serializer.save(owner=self.request.user)
