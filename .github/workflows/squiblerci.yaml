@@ -13,7 +13,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        python-version: [3.8, 3.9.6]
+        python-version: 3.9
 
     steps:
       - uses: actions/checkout@v2
@@ -29,6 +29,5 @@ jobs:
         run: python manage.py migrate
       - name: Run Tests
         env:
-          SECRET_KEY: ${{ env.SECRET_KEY }}
-        run: |
-          pytest
+          SECRET_KEY: test-secret
+        run: pytest
