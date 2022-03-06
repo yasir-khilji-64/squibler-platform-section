@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/4.0/ref/settings/
 """
 
 from os import getenv
+from datetime import timedelta
 from dotenv import load_dotenv
 from pathlib import Path
 
@@ -43,6 +44,7 @@ INSTALLED_APPS = [
 
     # Third party apps/libraries
     'rest_framework',
+    'rest_framework_simplejwt.token_blacklist',
 
     # Custom apps
     'apps.users',
@@ -77,6 +79,26 @@ TEMPLATES = [
         },
     },
 ]
+
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'rest_framework_simplejwt.authentication.JWTAuthentication',
+    )
+}
+
+SIMPLE_JWT = {
+    'ACCESS_TOKEN_LIFETIME': timedelta(minutes=15),
+    'REFRESH_TOKEN_LIFETIME': timedelta(hours=12),
+    'ROTATE_REFRESH_TOKENS': True,
+    'BLACKLIST_AFTER_ROTATION': True,
+
+    'ALGORITHM': 'HS256',
+    'SIGNING_KEY': getenv('SECRET_KEY'),
+    'AUDIENCE': 'squibler',
+    'ISSUER': 'squibler.io',
+
+    'AUTH_HEADER_TYPES': ('Bearer'),
+}
 
 WSGI_APPLICATION = 'config.wsgi.application'
 

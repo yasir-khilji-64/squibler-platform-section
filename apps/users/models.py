@@ -1,6 +1,8 @@
 from django.contrib.auth.models import (AbstractBaseUser, BaseUserManager,
                                         PermissionsMixin)
 from django.db import models
+from rest_framework_simplejwt.tokens import RefreshToken
+
 from .utils import generate_gravatar_url
 
 
@@ -58,7 +60,7 @@ class User(AbstractBaseUser, PermissionsMixin):
         return self.email
 
     def token(self):
-        return ''
+        return RefreshToken.for_user(self)
 
     def has_perm(self, perm, obj=None):
         '''
