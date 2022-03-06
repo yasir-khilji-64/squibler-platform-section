@@ -10,7 +10,7 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.0/ref/settings/
 """
 
-from os import getenv
+from os import environ
 from datetime import timedelta
 from dotenv import load_dotenv
 from pathlib import Path
@@ -24,7 +24,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 # SECURITY WARNING: keep the secret key used in production secret!
 load_dotenv()
-SECRET_KEY = getenv('SECRET_KEY')
+SECRET_KEY = environ.get('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -93,7 +93,7 @@ SIMPLE_JWT = {
     'BLACKLIST_AFTER_ROTATION': True,
 
     'ALGORITHM': 'HS256',
-    'SIGNING_KEY': getenv('SECRET_KEY'),
+    'SIGNING_KEY': environ.get('SECRET_KEY'),
     'AUDIENCE': 'squibler',
     'ISSUER': 'squibler.io',
 
