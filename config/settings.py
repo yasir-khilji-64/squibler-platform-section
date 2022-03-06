@@ -24,7 +24,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 # SECURITY WARNING: keep the secret key used in production secret!
 load_dotenv()
-SECRET_KEY = getenv('SECRET_KEY')
+SECRET_KEY = 'Keyboard_KAT'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
