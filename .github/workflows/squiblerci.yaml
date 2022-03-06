@@ -29,5 +29,5 @@ jobs:
         run: python manage.py migrate
       - name: Run Tests
         env:
-          SECRET_KEY: ${{ secrets.SECRET_KEY }}
+          SECRET_KEY: SECRET_KEY
         run: pytest
