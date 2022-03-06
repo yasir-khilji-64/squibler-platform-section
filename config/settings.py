@@ -48,6 +48,7 @@ INSTALLED_APPS = [
 
     # Custom apps
     'apps.users',
+    'apps.sections',
 ]
 
 MIDDLEWARE = [
