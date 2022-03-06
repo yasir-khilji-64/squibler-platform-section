@@ -93,7 +93,7 @@ SIMPLE_JWT = {
     'BLACKLIST_AFTER_ROTATION': True,
 
     'ALGORITHM': 'HS256',
-    'SIGNING_KEY': getenv('SECRET_KEY'),
+    'SIGNING_KEY': 'Keyboard_KAT',
     'AUDIENCE': 'squibler',
     'ISSUER': 'squibler.io',
 
